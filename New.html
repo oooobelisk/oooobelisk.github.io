@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .title {
+      font-family: Mozilla Headline;
+      font-size: 2rem;
+      
+    }
+
+    .EarthIcon {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+
+    }
+
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Mozilla+Headline:wght@200..700&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+
+  <h1 class="title"></h1>
+  <div class="con">
+      <img src="earth (1).svg"  width="'50" height="50" class="EarthIcon">
+  </div>
+
+  <hr>
+
+  <script>
+    let titleOptions = [
+      new Date().toLocaleDateString(),
+      new Date().toLocaleTimeString(),
+      'Amazing title',
+      'AAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+      'Sorry, as I am large language model I can comfirm this is a great title'
+    ]
+
+    let titleString = titleOptions[Math.floor(Math.random()*titleOptions.length)]
+    let title = document.body.querySelector('.title')
+    title.innerHTML = ''
+    let totalTime = 1000
+    let charIndex = 0
+    let titleText = titleString.split('')
+    let charamount = titleText.length
+    let timeIncrement = totalTime / charamount
+
+    let interval = setInterval(charwrite, timeIncrement)
+
+
+
+    function stopAnimation() {
+      if (title.innerHTML == titleString) {
+        clearInterval(interval)
+      }
+    }
+ 
+    function charwrite() {
+      title.innerHTML += titleText[charIndex ]
+      charIndex += 1
+      stopAnimation()
+    }
+  </script>
+</body>
+</html>
