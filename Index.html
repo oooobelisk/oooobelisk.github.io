@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .title {
+      font-family: Mozilla Headline;
+      font-size: 2rem;
+      
+    }
+
+    .diceicon {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+
+    }
+
+    .diceicon:hover {
+      transition-duration: 0.2s;
+      transform: translatey(-0.4rem);
+      scale: 105%;
+    }
+
+    .clicked {
+      animation-name: rotateAnimation;
+      animation-duration: 0.7s;
+
+    }
+
+    .bodyText {
+      font-family: 'mozilla text';
+      font-size: medium;
+    }
+
+    @keyframes rotateAnimation {
+      from {rotate: 0deg; transform: translateY(+0.4rem);}
+      to {rotate: 3turn;}
+    }
+
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Mozilla+Headline:wght@200..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <h1 class="title"></h1>
+  <div class="con">
+      <img src="dice-3.svg"  width="'50" height="50" class="diceicon">
+  </div>
+
+  <hr>
+
+  <p class="bodyText"></p>
+
+  <script> 
+    let titleOptions = [
+      'This page is dedicated to fish'
+    ]
+    let titleString = titleOptions[Math.floor(Math.random()*titleOptions.length)]
+    let title = document.body.querySelector('.title')
+    title.innerHTML = ''
+    let totalTime = 1000
+    let charIndex = 0
+    let titleText = titleString.split('')
+    let charamount = titleText.length
+    let timeIncrement = totalTime / charamount
+    let interval = setInterval(charwrite, timeIncrement)
+
+    document.title = titleString
+
+    let bodyText = document.body.querySelector('.bodyText')
+
+    let diceIcon = document.body.querySelector('.diceicon')
+
+    function stopAnimation() {
+      if (title.innerHTML == titleString) {
+        clearInterval(interval)
+      }
+    }
+ 
+    function charwrite() {
+      title.innerHTML += titleText[charIndex ]
+      charIndex += 1
+      stopAnimation()
+    }
+
+    if (titleString == 'This page is dedicated to fish') {
+      bodyText.innerHTML = "Fish are pretty much the most alien non-alien animal (as well as most things found underwater). " + "<br>"+"They breathe through of thousands of long slender threads, have always open eyeballs and taste through their skin."
+      
+    }
+
+    diceIcon.addEventListener("mousedown", () => {
+      diceIcon.classList.remove('clicked')
+
+      void diceIcon.offsetWidth
+      diceIcon.classList.add('clicked')
+    })
+
+
+  </script>
+</body>
+</html>
